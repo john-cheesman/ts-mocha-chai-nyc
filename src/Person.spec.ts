@@ -1,9 +1,13 @@
 import Person from './Person'
+import Utility from './Utility'
 import 'mocha'
 import { expect } from 'chai'
 
 describe('Person', () => {
-    let person
+    let person,
+        dateOfBirth
+
+    dateOfBirth = new Date(1999, 0, 1)
 
     before(() => {
         person = new Person({
@@ -11,7 +15,7 @@ describe('Person', () => {
             firstName: 'John',
             lastName: 'Cheesman'
         },
-        new Date(1999, 0, 1)
+        dateOfBirth
         )
     })
 
@@ -29,7 +33,7 @@ describe('Person', () => {
 
     describe('ageYears', () => {
         it('Should return the age in whole years', () => {
-            expect(person.ageYears).to.equal(18)
+            expect(person.ageYears).to.equal(Utility.calculateAge(dateOfBirth))
         })
     })
 })

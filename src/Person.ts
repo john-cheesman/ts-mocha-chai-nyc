@@ -1,3 +1,5 @@
+import Utility from './Utility'
+
 interface Names {
     title: string,
     firstName: string,
@@ -16,18 +18,7 @@ export default class Person {
     }
 
     get ageYears(): number {
-        return this.calculateAge(this._dateOfBirth)
-    }
-
-    // https://stackoverflow.com/a/24181701
-    private calculateAge(dateOfBirth: Date) {
-        let ageDiffMs: number,
-            ageDate: Date
-
-        ageDiffMs = Date.now() - dateOfBirth.getTime()
-        ageDate = new Date(ageDiffMs)
-
-        return Math.abs(ageDate.getUTCFullYear() - 1970)
+        return Utility.calculateAge(this._dateOfBirth)
     }
 }
 
